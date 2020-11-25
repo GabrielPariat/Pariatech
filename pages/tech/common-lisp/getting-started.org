@@ -1,0 +1,64 @@
+#+TITLE: Getting Started
+#+DATE: <2020-11-16 Mon>
+
+* Getting Started With Common Lisp
+So you learned about Lisp or more precisely about Common Lisp and you want to tinker with it.
+You're at the right place, but first we need an implementations (Compiler/Interpreter).
+There's many [[https://common-lisp.net/implementations][Implementations]] each with there uses, strenght and weaknesses.
+What we'll be using is [[http://www.sbcl.org][SBCL]], it's a high performance compiler.
+It's also open source and free as in freedom.
+It's also got plenty of goodies that we might look into at a later date.
+And finaly it's cross platform.
+
+* Installing SBCL
+You can find the SBCL binary appropriate for your [[http://www.sbcl.org/platform-table.html][platform here]].
+And install it by doing so:
+#+begin_src shell
+bzip2 -cd sbcl-<binary file> | tar xvf -
+cd sbcl-<extracted directory>
+sh install.sh
+#+end_src
+
+Or you can install it from your linux distribution repository:
+#+begin_src shell
+# Debian derivative
+sudo apt install sbcl
+#+end_src
+
+When all is done make sure that the executable is added to your path.
+Now you can start sbcl by calling "sbcl" from the terminal and the output should look like this:
+#+begin_src text
+This is SBCL 2.0.10.debian, an implementation of ANSI Common Lisp.
+More information about SBCL is available at <http://www.sbcl.org/>.
+
+SBCL is free software, provided as is, with absolutely no warranty.
+It is mostly in the public domain; some portions are provided under
+BSD-style licenses.  See the CREDITS and COPYING files in the
+distribution for more information.
+*
+#+end_src
+To quit just tpe (quit).
+
+For more information you can always look at the install [[http://www.sbcl.org/getting.html][page]].
+
+* Installing Quicklisp
+Quicklisp is pretty much a must have for Common Lisp. It's an awesome library manager and also easy to install. Just run those commands:
+#+begin_src shell
+curl -O https://beta.quicklisp.org/quicklisp.lisp
+curl -O https://beta.quicklisp.org/quicklisp.lisp.asc
+gpg --verify quicklisp.lisp.asc quicklisp.lisp
+sbcl --load quicklisp.lisp
+#+end_src
+Once in SBCL run:
+#+begin_src lisp
+(quicklisp-quickstart:install)
+(ql:add-to-init-file)
+(quit)
+#+end_src
+
+You can now use it to load libraries using:
+#+begin_src lisp
+(ql:quickload *library-name*)
+#+end_src
+
+You can read more on quicklisp [[https://www.quicklisp.org/beta/][here]].

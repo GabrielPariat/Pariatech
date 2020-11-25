@@ -1,0 +1,4 @@
+#+TITLE: Tech
+
+* About
+Tech is pretty cool!
